@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chat Assistant</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background: #eef2f7;
+margin:0;
+}
+
+header{
+background:#2c3e50;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.chat-container{
+width:400px;
+margin:40px auto;
+background:white;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+overflow:hidden;
+}
+
+.chat-box{
+height:350px;
+padding:15px;
+overflow-y:auto;
+border-bottom:1px solid #ddd;
+}
+
+.user{
+text-align:right;
+margin:10px;
+color:#2c3e50;
+}
+
+.bot{
+text-align:left;
+margin:10px;
+color:#16a085;
+}
+
+.input-area{
+display:flex;
+}
+
+input{
+flex:1;
+padding:12px;
+border:none;
+font-size:16px;
+}
+
+button{
+padding:12px 20px;
+border:none;
+background:#16a085;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#138d75;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>AI Chat Assistant</h2>
+</header>
+
+<div class="chat-container">
+
+<div class="chat-box" id="chatBox">
+<div class="bot">Hello! I am your AI assistant. Ask me something.</div>
+</div>
+
+<div class="input-area">
+<input type="text" id="userInput" placeholder="Type your message">
+<button onclick="sendMessage()">Send</button>
+</div>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+var input = document.getElementById("userInput").value.toLowerCase();
+var chatBox = document.getElementById("chatBox");
+
+if(input === "") return;
+
+chatBox.innerHTML += "<div class='user'>"+input+"</div>";
+
+var reply = "";
+
+if(input.includes("hello") || input.includes("hi")){
+reply = "Hello! How can I help you today?";
+}
+
+else if(input.includes("your name")){
+reply = "I am a simple AI Chat Assistant created for this project.";
+}
+
+else if(input.includes("ai")){
+reply = "Artificial Intelligence is a technology that enables machines to simulate human intelligence.";
+}
+
+else if(input.includes("project")){
+reply = "This project demonstrates a basic AI chatbot interface using HTML, CSS and JavaScript.";
+}
+
+else if(input.includes("how are you")){
+reply = "I am functioning perfectly. Thank you for asking!";
+}
+
+else{
+reply = "That is an interesting question. I am still learning to answer more queries.";
+}
+
+chatBox.innerHTML += "<div class='bot'>"+reply+"</div>";
+
+document.getElementById("userInput").value="";
+
+chatBox.scrollTop = chatBox.scrollHeight;
+
+}
+
+</script>
+
+</body>
+</html>
